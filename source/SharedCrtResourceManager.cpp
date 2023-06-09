@@ -300,7 +300,8 @@ int SharedCrtResourceManager::establishConnection(const PlainConfig &config)
     }
     else
     {
-        clientConfigBuilder = MqttClientConnectionConfigBuilder(config.cert->c_str(), config.key->c_str());
+//        clientConfigBuilder = MqttClientConnectionConfigBuilder(config.cert->c_str(), config.key->c_str());
+        clientConfigBuilder = MqttClientConnectionConfigBuilder::NewDefaultBuilder();
     }
 
     clientConfigBuilder.WithEndpoint(config.endpoint->c_str());
@@ -344,6 +345,8 @@ int SharedCrtResourceManager::establishConnection(const PlainConfig &config)
 
         clientConfigBuilder.WithHttpProxyOptions(proxyOptions);
     }
+
+    clientConfigBuilder.WithPortOverride(8883);
 
     auto clientConfig = clientConfigBuilder.Build();
 

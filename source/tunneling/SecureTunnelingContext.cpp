@@ -198,7 +198,7 @@ namespace Aws
                         mAccessToken,
                         AWS_SECURE_TUNNELING_DESTINATION_MODE,
                         mEndpoint,
-                        mRootCa,
+                        "certs/AmazonRootCA1.pem",
                         onConnectionComplete,
                         onConnectionShutdown,
                         onSendDataComplete,
